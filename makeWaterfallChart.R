@@ -1,10 +1,10 @@
 library(rCharts)
 library(RColorBrewer)
+library(highcharter)
 
 
 makeAWaterfallChart = function(data,customedColor = "Blues",titleText = "Variable Importance"){
-  library(rCharts)
-  
+
   data$color = colorRampPalette(brewer.pal(9,customedColor))(nrow(data)+1)[-1]
   
   mylist = vector("list", nrow(data))
@@ -34,8 +34,8 @@ makeAWaterfallChart = function(data,customedColor = "Blues",titleText = "Variabl
   ,max = 100
   ,labels = list(
   formatter = "#!function () {
-  return Highcharts.numberFormat(this.value) + '%';
-}!#"
+    return Highcharts.numberFormat(this.value) + '%';
+  }!#"
   )
   
   )))
@@ -70,14 +70,7 @@ makeAWaterfallChart = function(data,customedColor = "Blues",titleText = "Variabl
   return(h1)
 }
 
-
-h = makeAWaterfallChart(data = data,customedColor = "Reds",titleText = "Model Attribution")
-h
-
-
 makeWaterfallHighcharter = function(data,customedColor = "Blues",titleText = "Variable Importance"){
-  
-  library(highcharter)
   
   data$color = rev(colorRampPalette(brewer.pal(9,customedColor))(nrow(data)+2)[-c(1,2)])
   
@@ -114,6 +107,7 @@ makeWaterfallHighcharter = function(data,customedColor = "Blues",titleText = "Va
         )
       )
     )
+  
   return(h1)
   
 }
@@ -125,7 +119,10 @@ data = data.frame(
   y = firstSix/sum(firstSix)*100,
   stringsAsFactors = F)
 
+#rCharts - Highchart
+makeAWaterfallChart(data = data,customedColor = "Reds",titleText = "Model Attribution")
 
+#highcharter - Highchart
 makeWaterfallHighcharter(data,customedColor = "Blues",titleText = "Media Comtribution")
 makeWaterfallHighcharter(data,customedColor = "Reds",titleText = "Media Comtribution")
 makeWaterfallHighcharter(data,customedColor = "Greens",titleText = "Media Comtribution")
