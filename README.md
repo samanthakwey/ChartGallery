@@ -62,6 +62,8 @@ __Theme: Blues__
 ```r
 makeWaterfallHighcharter(data,customedColor = "Blues",titleText = "Media Comtribution")
 ```
+![highchart](screenshot/waterfall_Blues.png)
+
 __Theme: Reds__
 ```r
 makeWaterfallHighcharter(data,customedColor = "Reds",titleText = "Media Comtribution")
