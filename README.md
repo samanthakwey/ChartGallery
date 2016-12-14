@@ -1,4 +1,4 @@
-# ChartGallery
+# Chart Gallery
 My Chart Collection (R)
 * Source: rCharts, googleVis, Highcharter, etc.
 
