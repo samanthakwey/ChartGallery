@@ -2,6 +2,8 @@
 My Chart Collection (R)
 * Source: rCharts, googleVis, Highcharter, etc.
 
+[Highcharts Library](http://www.highcharts.com/) 
+
 ```r
 library(rCharts)
 library(RColorBrewer)
@@ -60,15 +62,17 @@ data
 ### Plot the waterfall chart with highcharter
 __Theme: Blues__
 ```r
-makeWaterfallHighcharter(data,customedColor = "Blues",titleText = "Media Comtribution")
+makeWaterfallHighcharter(data,customedColor = "Blues",titleText = "Media Contribution")
 ```
 ![highchart](screenshot/waterfall_Blues.png)
 
 __Theme: Reds__
 ```r
-makeWaterfallHighcharter(data,customedColor = "Reds",titleText = "Media Comtribution")
+makeWaterfallHighcharter(data,customedColor = "Reds",titleText = "Media Contribution")
 ```
+![highchart](screenshot/waterfall_Reds.png)
 __Theme: Greens__
 ```r
-makeWaterfallHighcharter(data,customedColor = "Greens",titleText = "Media Comtribution")
+makeWaterfallHighcharter(data,customedColor = "Greens",titleText = "Media Contribution")
 ```
+![highchart](screenshot/waterfall_Greens.png)
