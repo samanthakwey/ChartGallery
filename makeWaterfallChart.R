@@ -120,7 +120,10 @@ data = data.frame(
   stringsAsFactors = F)
 
 #rCharts - Highchart
+makeAWaterfallChart(data = data,customedColor = "Blues",titleText = "Model Attribution")
 makeAWaterfallChart(data = data,customedColor = "Reds",titleText = "Model Attribution")
+makeAWaterfallChart(data = data,customedColor = "Greens",titleText = "Model Attribution")
+
 
 #highcharter - Highchart
 makeWaterfallHighcharter(data,customedColor = "Blues",titleText = "Media Comtribution")
