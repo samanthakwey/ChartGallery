@@ -9,7 +9,7 @@ library(rCharts)
 library(RColorBrewer)
 library(highcharter)
 ```
-### Set up Waterfall Chart function using highcharter package
+### Set up Chart functions using highcharter/rCharts/googleVis packages (Example)
 ```r
 
 makeWaterfallHighcharter = function(data,customedColor ="Blues",titleText = "Variable Importance"){
@@ -77,3 +77,27 @@ __Theme: Greens__
 makeWaterfallHighcharter(data,customedColor = "Greens",titleText = "Media Contribution")
 ```
 ![highchart](screenshot/waterfall_Greens.png)
+
+### Plot the waterfall/Pie Combo chart with rCharts
+__Theme: Blues__
+```r
+#dummy data
+data = data.frame(
+  name = c('Base','TV','Radio','Search','Video','Digital','Audio'),
+  y = round(runif(7,1,100),2),
+  stringsAsFactors = F)
+makeAWaterfallPieChart(data = data,customedColor = "Blues",titleText = "Total Number of Quote", yTitle = "Quote",centerPlace = c(130, 65))
+```
+![highchart](screenshot/combo_Blues.png)
+
+### Plot the Stacked Column chart with rCharts
+```r
+#dummy data
+name = c("Television","Radio","Online Display","Paid Search","Hispanic Media","Direct Mail")
+color = c("navy","red","green","purple","orange","grey")
+mm = data.frame(c(92,2,11,7,3,20),c(78,14,17,9,7,11),stringsAsFactors = F)
+makeStackedColumn(name,color,mm)
+```
+![highchart](screenshot/stackedColumn.png)
+
+
