@@ -3,6 +3,7 @@ My Chart Collection (R)
 * Source: rCharts, googleVis, Highcharter, etc.
 
 [Highcharts Library](http://www.highcharts.com/) 
+[Google Charts](https://developers.google.com/chart/) 
 
 ```r
 library(rCharts)
