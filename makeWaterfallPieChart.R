@@ -25,21 +25,16 @@ makeAWaterfallPieChart = function(data,customedColor = "Blues",titleText = "Vari
     mylist2[[i]]$y = data2[i,2]
     mylist2[[i]]$color = data2[i,3]
   }
-  
-  
   h1 = Highcharts$new()
   h1$chart(
     type =  'waterfall'
   )
-  
   h1$title(
     text = titleText
   )
-  
   h1$xAxis(
     type = 'category'
   )
-  
   h1$yAxis(list(list(
     title = list(
       text = yTitle
@@ -49,21 +44,16 @@ makeAWaterfallPieChart = function(data,customedColor = "Blues",titleText = "Vari
       return Math.round(Highcharts.numberFormat(this.value)) + 'MM';
       }!#"
     )
-    
   )))
-  
   h1$legend(
     enabled = FALSE
   )
-  
   h1$tooltip(
     pointFormat = '<b>{point.y:,.2f}MM</b>'
   )
-  
   h1$series(
     list(
       list(
-        
         data = mylist,
         dataLabels = list(
           type = 'waterfall',
@@ -80,7 +70,6 @@ makeAWaterfallPieChart = function(data,customedColor = "Blues",titleText = "Vari
         tooltip = list(
           pointFormat = '<b>{point.percentage:,.2f}%</b>'
           )
-        
       ),
       list(
         type = 'pie',
@@ -92,17 +81,15 @@ makeAWaterfallPieChart = function(data,customedColor = "Blues",titleText = "Vari
           enabled = TRUE,
           format = '<b>{point.name}</b>: {point.percentage:.1f} %'
         ),
-        
         tooltip = list(
           pointFormat = '<b>{point.y:,.2f}%</b>'
         )
       )
-      
     ))
-  
   return(h1)
 }
 
+#dummy data
 data = data.frame(
   name = c('Base','TV','Radio','Search','Video','Digital','Audio'),
   y = round(runif(7,1,100),2),
