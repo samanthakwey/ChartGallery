@@ -1,0 +1,112 @@
+---
+title: "pieDrillDown"
+author: "Samantha Wey"
+date: "January 11, 2017"
+output: html_document
+---
+
+
+```{r}
+library(highcharter)
+
+
+hc <- highchart() %>% 
+  hc_plotOptions(
+    series = list(
+      boderWidth = 0,
+      dataLabels = list(enabled = TRUE,format =  "{point.name}: {point.y:.1f}%")
+    )
+  ) %>% 
+  hc_chart(type = "pie") %>% 
+  hc_title(text = "Farmers Insurance Quotes - 2016" ) %>%
+  hc_subtitle(text = "Click the slices to view decomposition details. ") %>%
+  hc_xAxis(type = "category") %>% 
+  hc_add_series(
+    name = "Brands",
+    colorByPoint = T,
+    data = jsonlite::fromJSON('[{
+                              "name": "Agent Auto",
+                              "y": 51.6,
+                              "drilldown": "Agent Auto"
+                              }, {
+                              "name": "Agent Home",
+                              "y": 39.7,
+                              "drilldown": "Agent Home"
+                              }, {
+                              "name": "Online Auto",
+                              "y": 5.6,
+                              "drilldown": "Online Auto"
+                              }, {
+                              "name": "Online Home",
+                              "y": 3.7,
+                              "drilldown": "Online Home"
+                              }]',simplifyVector = FALSE)
+  ) %>% 
+  hc_drilldown(
+    series = jsonlite::fromJSON('[{
+                                "name": "Agent Auto",
+                                "id": "Agent Auto",
+                                "data": [
+                                {"name":"Base","y":68.6,"color":"#AFABAB"},
+                                {"name":"Brand TV","y":10.3,"color":"#FF5050"},
+                                {"name":"Brand Radio","y":1.9,"color":"#FEBC02"},
+                                {"name":"Brand Digital","y":0,"color":"#FFFF00"},
+                                {"name":"Branded Perf Digital - Auto","y":0,"color":"#2CFF21"},
+                                {"name":"Unbranded Perf Digital - Auto","y":2.4,"color":"#00B050"},
+                                {"name":"AMP Radio","y":0,"color":"#00B0F0"},
+                                {"name":"Direct Mail - Auto(Corporate) ","y":9.2,"color":"#1F4E79"},
+                                {"name":"Direct Mail (AMP) ","y":7.5,"color":"#7C35B1"}
+                                ]
+                                }, {
+                                "name": "Agent Home",
+                                "id": "Agent Home",
+                                "data": [
+                                {"name":"Base","y":60.4,"color":"#AFABAB"},
+                                {"name":"Brand TV","y":7.6,"color":"#FF5050"},
+                                {"name":"Brand Radio","y":4.1,"color":"#FEBC02"},
+                                {"name":"Brand Digital","y":1.7,"color":"#FFFF00"},
+                                {"name":"Branded Perf Digital - Home","y":0,"color":"#2CFF21"},
+                                {"name":"Unbranded Perf Digital - Home","y":2.6,"color":"#00B050"},
+                                {"name":"AMP Radio","y":0,"color":"#00B0F0"},
+                                {"name":"Direct Mail - Home(Corporate) ","y":12.3,"color":"#1F4E79"},
+                                {"name":"Direct Mail (AMP) ","y":11.4,"color":"#7C35B1"}
+                                ]
+                                },
+                                {
+                                "name": "Online Auto",
+                                "id": "Online Auto",
+                               "data": [
+                                {"name":"Base","y":46.4,"color":"#AFABAB"},
+                                {"name":"Brand TV","y":33.1,"color":"#FF5050"},
+                                {"name":"Brand Radio","y":6.6,"color":"#FEBC02"},
+                                {"name":"Brand Digital","y":0,"color":"#FFFF00"},
+                                {"name":"Branded Perf Digital - Auto","y":2.8,"color":"#2CFF21"},
+                                {"name":"Unbranded Perf Digital - Auto","y":9.5,"color":"#00B050"},
+                                {"name":"AMP Radio","y":0,"color":"#00B0F0"},
+                                {"name":"Direct Mail - Auto(Corporate) ","y":1.6,"color":"#1F4E79"},
+                                {"name":"Direct Mail (AMP) ","y":0,"color":"#7C35B1"}
+                                ]
+                                },
+                                {
+                                "name": "Online Home",
+                                "id": "Online Home",
+                                "data": [
+                                {"name":"Base","y":27.5,"color":"#AFABAB"},
+                                {"name":"Brand TV","y":24.1,"color":"#FF5050"},
+                                {"name":"Brand Radio","y":2.5,"color":"#FEBC02"},
+                                {"name":"Brand Digital","y":2.6,"color":"#FFFF00"},
+                                {"name":"Branded Perf Digital - Home","y":9,"color":"#2CFF21"},
+                                {"name":"Unbranded Perf Digital - Home","y":33.4,"color":"#00B050"},
+                                {"name":"AMP Radio","y":0,"color":"#00B0F0"},
+                                {"name":"Direct Mail - Home(Corporate) ","y":1,"color":"#1F4E79"},
+                                {"name":"Direct Mail (AMP) ","y":11.4,"color":"#7C35B1"}
+                                ]
+                                }]',simplifyVector = FALSE)
+  )%>% hc_add_theme(hc_theme_flat())%>% hc_add_theme(hc_theme_google())
+hc
+
+
+
+
+```
+
